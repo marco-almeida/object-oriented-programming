@@ -3,8 +3,6 @@ package aula05;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Helper.Utils;
-
 public class ex05 {
     public static Utilizador[] alunos = new Utilizador[100];
     public static Livro[] catalogo = new Livro[100];
