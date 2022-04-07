@@ -1,7 +1,5 @@
 package Helper;
 
-
-
 import java.util.Scanner;
 
 public final class Utils {
@@ -45,5 +43,10 @@ public final class Utils {
                 input.nextLine();
             }
         }
+    }
+
+    public static String nextLine(String text){
+        System.out.print(text);
+        return input.nextLine();
     }
 }
