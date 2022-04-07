@@ -10,7 +10,7 @@ public final class Utils {
     }
 
     /**
-     * Will loop infinitely printing text until a valid input has been read.
+     * Will loop indefinitely printing text until a valid input has been read.
      * 
      * @param text
      * @return Integer
@@ -28,7 +28,7 @@ public final class Utils {
     }
 
     /**
-     * Will loop infinitely printing text until a valid input has been read.
+     * Will loop indefinitely printing text until a valid input has been read.
      * 
      * @param text
      * @return double
@@ -44,7 +44,11 @@ public final class Utils {
             }
         }
     }
-
+    /**
+     * Prints text and reads nextLine input.
+     * @param text
+     * @return String
+     */
     public static String nextLine(String text){
         System.out.print(text);
         return input.nextLine();

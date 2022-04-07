@@ -8,7 +8,6 @@ public class Circulo {
             this.raio = raio;
         }
     }
-
     public double area() {
         return Math.PI * (raio * raio);
     }
