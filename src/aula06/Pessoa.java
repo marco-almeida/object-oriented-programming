@@ -8,9 +8,11 @@ public class Pessoa {
     private Date dataNasc;
 
     public Pessoa(String nome, int cc, Date dataNasc) {
-        this.nome = nome;
-        this.cc = cc;
-        this.dataNasc = dataNasc;
+        if (nome != null && !nome.equals("") && (String.valueOf(cc)).length() == 7) {
+            this.nome = nome;
+            this.cc = cc;
+            this.dataNasc = dataNasc;
+        }
     }
 
     @Override
