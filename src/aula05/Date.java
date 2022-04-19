@@ -1,5 +1,8 @@
 package aula05;
 
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
 public class Date {
 
     private int day, month, year;
@@ -12,6 +15,14 @@ public class Date {
         } else {
             System.err.println("Invalid date! Couldn't create new date.");
         }
+    }
+
+    public Date() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime now = LocalDateTime.now();
+        this.day = Integer.parseInt(dtf.format(now).split("/")[2]);
+        this.month = Integer.parseInt(dtf.format(now).split("/")[1]);
+        this.year = Integer.parseInt(dtf.format(now).split("/")[0]);
     }
 
     /**
