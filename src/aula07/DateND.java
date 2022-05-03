@@ -21,13 +21,32 @@ public class DateND extends Date {
         days++;
     }
 
-    public void set(int days){
+    /**
+     * Returns equivalent Date in DateYMD format
+     * 
+     * @return DateYMD object
+     */
+    public DateYMD ndToYmd() {
+        DateYMD temp = new DateYMD(1, 1, 2000);
+        if (this.days >= 0) {
+            for (int i = this.days; i > 0; i--) {
+                temp.increment();
+            }
+        } else {
+            for (int i = this.days; i < 0; i++) {
+                temp.decrement();
+            }
+        }
+        return temp;
+    }
+
+    public void set(int days) {
         this.days = days;
     }
 
     @Override
     public String toString() {
-        return String.format("%d days difference to 1st January 2000", days);
+        return String.format("%s", ndToYmd().toString());
     }
 
     public int getDays() {

@@ -5,13 +5,13 @@ import Helper.Utils;
 public class ex02b {
     public static void main(String[] args) {
         int op;
-        DateND d1 = new DateND(0);
+        Date d1 = new DateND(0);
         do {
             printMenu();
             op = Utils.nextInt("");
             switch (op) {
                 case 1:
-                    setNewDate(d1);
+                    d1 = setNewDate();
                     break;
                 case 2:
                     System.out.println(d1.toString());
@@ -24,7 +24,6 @@ public class ex02b {
                     break;
             }
         } while (op != 0);
-
     }
 
     public static void printMenu() {
@@ -36,8 +35,10 @@ public class ex02b {
         System.out.println("0 - exit");
     }
 
-    public static void setNewDate(DateND date) {
+    public static DateND setNewDate() {
         int day = Utils.nextInt("Day: ");
-        date.set(day);
+        int month = Utils.nextInt("Month: ");
+        int year = Utils.nextInt("Year: ");
+        return new DateYMD(day, month, year).ymdToNd();
     }
 }

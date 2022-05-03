@@ -61,6 +61,28 @@ public class DateYMD extends Date {
         }
     }
 
+    /**
+     * Returns equivalent Date in DateND format
+     * 
+     * @return DateND object
+     */
+    public DateND ymdToNd() {
+        int days = 0;
+        DateYMD temp = new DateYMD(day, month, year);
+        if (year >= 2000 && month >= 1 && day >= 1) {
+            while (temp.getYear() != 2000 || temp.getDay() != 1 || temp.getMonth() != 1) {
+                temp.decrement();
+                days++;
+            }
+        } else {
+            while (temp.getYear() != 2000 || temp.getDay() != 1 || temp.getMonth() != 1) {
+                temp.increment();
+                days--;
+            }
+        }
+        return new DateND(days);
+    }
+
     @Override
     public String toString() {
         return String.format("%04d-%02d-%02d", year, month, day);
