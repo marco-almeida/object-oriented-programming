@@ -1,19 +1,17 @@
-package aula05;
+package aula07;
 
-import java.util.Scanner;
+import Helper.Utils;
 
-public class ex01 {
+public class ex02 {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         int op;
-        Date d1 = new Date(0, 0, 0);
+        DateYMD d1 = new DateYMD();
         do {
             printMenu();
-            op = input.nextInt();
-
+            op = Utils.nextInt("");
             switch (op) {
                 case 1:
-                    setNewDate(d1, input);
+                    setNewDate(d1);
                     break;
                 case 2:
                     System.out.println(d1.toString());
@@ -27,7 +25,6 @@ public class ex01 {
             }
         } while (op != 0);
 
-        input.close();
     }
 
     public static void printMenu() {
@@ -39,13 +36,10 @@ public class ex01 {
         System.out.println("0 - exit");
     }
 
-    public static void setNewDate(Date date, Scanner input) {
-        System.out.print("Day: ");
-        int day = input.nextInt();
-        System.out.print("Month: ");
-        int month = input.nextInt();
-        System.out.print("Year: ");
-        int year = input.nextInt();
+    public static void setNewDate(DateYMD date) {
+        int day = Utils.nextInt("Day: ");
+        int month = Utils.nextInt("Month: ");
+        int year = Utils.nextInt("Year: ");
         date.set(day, month, year);
     }
 }
