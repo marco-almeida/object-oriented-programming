@@ -44,13 +44,37 @@ public final class Utils {
             }
         }
     }
+
     /**
      * Prints text and reads nextLine input.
+     * 
      * @param text
      * @return String
      */
-    public static String nextLine(String text){
+    public static String nextLine(String text) {
         System.out.print(text);
         return input.nextLine();
+    }
+
+    /**
+     * Prints text and reads next input.
+     * 
+     * @param text
+     * @return String
+     */
+    public static String next(String text) {
+        System.out.print(text);
+        return input.next();
+    }
+
+    /**
+     * Prints text and reads nextChar input.
+     * 
+     * @param text
+     * @return char
+     */
+    public static char nextChar(String text) {
+        System.out.print(text);
+        return input.next().charAt(0); 
     }
 }

@@ -83,7 +83,7 @@ public class ex01 {
 
 	public static void compareAllFigures(List<Forma> circulos, List<Forma> retangulos,
 			List<Forma> triangulos) {
-		if (circulos.size() < 2 || retangulos.size() < 2 || triangulos.size() < 2) {
+		if (circulos.size() < 2 && retangulos.size() < 2 && triangulos.size() < 2) {
 			System.out.println("Not enough pairs in order to compare all figures.");
 			return;
 		}
