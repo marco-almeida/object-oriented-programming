@@ -69,6 +69,9 @@ public class DateYMD extends Date {
     public DateND ymdToNd() {
         int days = 0;
         DateYMD temp = new DateYMD(day, month, year);
+        if(!valid(day, month, year)){
+            return new DateND(0);
+        }
         if (year >= 2000 && month >= 1 && day >= 1) {
             while (temp.getYear() != 2000 || temp.getDay() != 1 || temp.getMonth() != 1) {
                 temp.decrement();
