@@ -10,11 +10,6 @@ public abstract class Pesado extends Viatura {
         this.peso = peso;
     }
 
-    @Override
-    public String toString() {
-        return super.toString() + "Pesado [numQuadro=" + numQuadro + ", peso=" + peso + "] ";
-    }
-
     public int getNumQuadro() {
         return numQuadro;
     }

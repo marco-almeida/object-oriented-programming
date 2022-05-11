@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ex01a {
     public static void main(String[] args) {
-        List<Viatura> viaturas = new ArrayList<Viatura>();
+        List<Viatura> viaturas = new ArrayList<>();
         viaturas.add(new Motociclo("asdsad", "kawa", "1", 330, "rapida"));
         viaturas.add(new Taxi("tacsi", "mercedi", "a180ds1ss8a0", 110, 4, 350, 123));
         viaturas.add(new Ligeiro("12-AS-32", "Renault", "Megane", 90, 3, 550));

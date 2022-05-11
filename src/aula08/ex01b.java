@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ex01b {
     public static void main(String[] args) {
-        List<Viatura> viaturas = new ArrayList<Viatura>();
+        List<Viatura> viaturas = new ArrayList<>();
         viaturas.add(new Motociclo("asdsad", "kawa", "1", 330, "rapida"));
         viaturas.add(new Ligeiro("12-AS-32", "Renault", "Megane", 90, 3, 550));
         viaturas.add(new LigeiroEletrico("asd", "tesla", "model 3", 770, 3, 4, 3));
@@ -23,19 +23,19 @@ public class ex01b {
                         viatura,
                         viatura.equals(viatura2), viatura.ultimoTrajeto(), viatura.distanciaTotal());
             }
-            // if(viatura instanceof VeiculoEletrico){
-            //     System.out.printf("autonomia: %d\n",viatura.autonomia());
-            // }
+            if (viatura instanceof VeiculoEletrico) {
+                System.out.printf("autonomia: %d\n", ((VeiculoEletrico) viatura).autonomia());
+            }
             if (viatura.distanciaTotal() > maxKm) {
                 maxKm = viatura.distanciaTotal();
                 maxima = viatura;
             }
         }
-        
-        System.out.println("\n\n"+viaturas+"\n\n\n");
+
+        System.out.println("\n\n" + viaturas + "\n\n\n");
         Collections.sort(viaturas);
         System.out.println("SORTED BY HP\t" + viaturas);
-        
+
         Empresa empresa;
         try {
             empresa = new Empresa("EIMPRESA", "1234-567", "emailemail", viaturas);
@@ -47,5 +47,4 @@ public class ex01b {
         System.out.println("\n\n" + empresa);
         System.out.printf("\n\nViatura com mais distância percorrida: %s", maxima);
     }
-
 }

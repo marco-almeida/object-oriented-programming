@@ -19,7 +19,6 @@ public class Empresa {
         } else {
             throw new UnsupportedOperationException("Invalid email!");
         }
-
     }
 
     public Empresa(String nome, String codigoPostal, String email, List<Viatura> viaturas) {

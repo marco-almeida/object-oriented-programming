@@ -8,14 +8,14 @@ public class Ementa {
     private String local;
     private List<Prato> pratos;
 
-    public Ementa(String nome, String local, List<Prato> pratos) {
+    public Ementa(String nome, String local) {
         this.nome = nome;
         this.local = local;
         this.pratos = new ArrayList<>();
     }
 
-    public void addPrato(Prato p, DiaSemana d){
-        
+    public void addPrato(Prato p, DiaSemana d) {
+        pratos.add(p);
     }
 
     @Override
@@ -55,6 +55,15 @@ public class Ementa {
         return true;
     }
 
-    
+    @Override
+    public String toString() {
+        int i = 0;
+        StringBuilder sb = new StringBuilder();
+        for (Prato p : pratos) {
+            sb.append(p + ", dia " + DiaSemana.getEnum(i) + "\n");
+            i++;
+        }
+        return sb.toString();
+    }
 
 }
