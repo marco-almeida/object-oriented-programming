@@ -1,28 +1,48 @@
-package aula05;
+package aula09;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-public class Date {
+public class DateYMD extends Date implements Comparable<DateYMD> {
 
     private int day, month, year;
 
-    public Date(int day, int month, int year) {
+    public DateYMD(int day, int month, int year) {
         if (valid(day, month, year)) {
             this.day = day;
             this.month = month;
             this.year = year;
-        } else {
-            System.err.println("Invalid date! Couldn't create new date.");
         }
     }
 
-    public Date() {
+    public DateYMD() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDateTime now = LocalDateTime.now();
         this.day = Integer.parseInt(dtf.format(now).split("/")[2]);
         this.month = Integer.parseInt(dtf.format(now).split("/")[1]);
         this.year = Integer.parseInt(dtf.format(now).split("/")[0]);
+    }
+
+    @Override
+    public int compareTo(DateYMD o) {
+        if (equals(o)) {
+            return 0;
+        }
+        if (this.year > o.getYear()) {
+            return 1;
+        } else if (this.year < o.getYear()) {
+            return -1;
+        }
+        if (this.month > o.getMonth()) {
+            return 1;
+        } else if (this.month < o.getMonth()) {
+            return -1;
+        }
+        if (this.day > o.getDay()) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     /**
@@ -55,6 +75,39 @@ public class Date {
         }
     }
 
+    public void set(int day, int month, int year) {
+        if (valid(day, month, year)) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+    }
+
+    /**
+     * Returns equivalent Date in DateND format
+     * 
+     * @return DateND object
+     */
+    public DateND ymdToNd() {
+        int days = 0;
+        DateYMD temp = new DateYMD(day, month, year);
+        if (!valid(day, month, year)) {
+            return new DateND(0);
+        }
+        if (year >= 2000 && month >= 1 && day >= 1) {
+            while (temp.getYear() != 2000 || temp.getDay() != 1 || temp.getMonth() != 1) {
+                temp.decrement();
+                days++;
+            }
+        } else {
+            while (temp.getYear() != 2000 || temp.getDay() != 1 || temp.getMonth() != 1) {
+                temp.increment();
+                days--;
+            }
+        }
+        return new DateND(days);
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -73,7 +126,7 @@ public class Date {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Date other = (Date) obj;
+        DateYMD other = (DateYMD) obj;
         if (day != other.day)
             return false;
         if (month != other.month)
@@ -81,51 +134,6 @@ public class Date {
         if (year != other.year)
             return false;
         return true;
-    }
-
-    public void set(int day, int month, int year) {
-        if (valid(day, month, year)) {
-            this.day = day;
-            this.month = month;
-            this.year = year;
-        } else {
-            System.err.println("Invalid date! Couldn't set new date.");
-        }
-    }
-
-    public static boolean valid(int day, int month, int year) {
-        if (year < 1) {
-            return false;
-        }
-        if (!validMonth(month)) {
-            return false;
-        }
-        if (day < 1 || day > monthDays(month, year)) {
-            return false;
-        }
-        return true;
-    }
-
-    public static boolean validMonth(int month) {
-        return month > 0 && month < 13;
-    }
-
-    /**
-     * 
-     * @param month
-     * @param year
-     * @return number of days in month
-     */
-    public static int monthDays(int month, int year) {
-        int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-        if (leapYear(year)) {
-            days[1] = 29;
-        }
-        return days[month - 1];
-    }
-
-    public static boolean leapYear(int year) {
-        return ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0)));
     }
 
     @Override

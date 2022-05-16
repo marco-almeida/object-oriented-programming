@@ -12,6 +12,8 @@ public class Pessoa {
             this.nome = nome;
             this.cc = cc;
             this.dataNasc = dataNasc;
+        } else {
+            System.out.println("Erro.");
         }
     }
 
