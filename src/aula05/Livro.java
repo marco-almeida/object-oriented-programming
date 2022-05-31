@@ -25,6 +25,17 @@ public class Livro {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (disponivel ? 1231 : 1237);
+        result = prime * result + id;
+        result = prime * result + ((tipoEmprestimo == null) ? 0 : tipoEmprestimo.hashCode());
+        result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -33,6 +44,8 @@ public class Livro {
         if (getClass() != obj.getClass())
             return false;
         Livro other = (Livro) obj;
+        if (disponivel != other.disponivel)
+            return false;
         if (id != other.id)
             return false;
         if (tipoEmprestimo == null) {

@@ -10,7 +10,7 @@ public class ex06 {
         int ano = 0;
         boolean goahead = false;
         while (!goahead) {
-            System.out.printf("Inserir data composta separada pelo símbolo ':' (MM:YYYY): ");
+            System.out.print("Inserir data composta separada pelo símbolo ':' (MM:YYYY): ");
             String data = sc.next();
             try {
                 mes = Integer.parseInt(data.split(":")[0]);

@@ -8,6 +8,7 @@ public class Circulo {
             this.raio = raio;
         }
     }
+
     public double area() {
         return Math.PI * (raio * raio);
     }
@@ -19,6 +20,16 @@ public class Circulo {
     @Override
     public String toString() {
         return "Circulo [raio=" + raio + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        long temp;
+        temp = Double.doubleToLongBits(raio);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 
     @Override

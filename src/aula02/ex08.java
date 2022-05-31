@@ -12,6 +12,6 @@ public class ex08 {
         ler.close();
         double hipotenusa = Math.hypot(a, b);
         double angulo = Math.toDegrees(Math.asin(b / hipotenusa));
-        System.out.printf("Hipotenusa: %4.2f\nÂngulo: %4.2f", hipotenusa, angulo);
+        System.out.printf("Hipotenusa: %4.2f%nÂngulo: %4.2f", hipotenusa, angulo);
     }
 }

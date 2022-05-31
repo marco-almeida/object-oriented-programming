@@ -10,7 +10,7 @@ import java.io.IOException;
 public class ex04 {
     public static void main(String[] args) throws IOException {
         List<String> moreThanTwoChars = new ArrayList<>();
-        Scanner input = new Scanner(new FileReader("C:/Users/Marco/Desktop/uni/POO/src/aula10/words.txt"));
+        Scanner input = new Scanner(new FileReader("src/aula10/words.txt"));
         while (input.hasNext()) {
             String word = input.next();
             if (word.length() > 2) {

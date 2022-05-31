@@ -3,7 +3,7 @@ package aula04;
 import java.util.Scanner;
 
 public class ex03 {
-    public static Scanner input = new Scanner(System.in);
+    public static final Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         System.out.println("Introduza uma frase:");

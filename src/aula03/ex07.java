@@ -20,7 +20,7 @@ public class ex07 {
                 } else if (guess < randomNum) {
                     System.out.println("Muito baixo!");
                 } else {
-                    System.out.printf("Acertaste com %d tentativas efetuadas!\n", tentativas);
+                    System.out.printf("Acertaste com %d tentativas efetuadas!%n", tentativas);
                 }
             }
             System.out.print("Pretendes continuar a jogar?(Sim/S)");

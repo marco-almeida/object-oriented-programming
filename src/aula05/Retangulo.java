@@ -27,6 +27,18 @@ public class Retangulo {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        long temp;
+        temp = Double.doubleToLongBits(altura);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(comprimento);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -47,7 +59,7 @@ public class Retangulo {
     }
 
     public void setComprimento(double comprimento) {
-        if (comprimento > 0){
+        if (comprimento > 0) {
             this.comprimento = comprimento;
         }
     }
@@ -57,7 +69,7 @@ public class Retangulo {
     }
 
     public void setAltura(double altura) {
-        if (altura > 0){
+        if (altura > 0) {
             this.altura = altura;
         }
     }

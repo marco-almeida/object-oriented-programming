@@ -3,7 +3,7 @@ package aula04;
 import java.util.Scanner;
 
 public class ex04 {
-    public static Scanner input = new Scanner(System.in);
+    public static final Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         int[] data = readValues();
@@ -11,19 +11,21 @@ public class ex04 {
     }
 
     public static int[] readValues() {
-        int ano, mes, dia;
+        int ano;
+        int mes;
+        int dia;
         do {
-            System.out.printf("Inserir ano: ");
+            System.out.print("Inserir ano: ");
             ano = input.nextInt();
         } while (ano < 0);
 
         do {
-            System.out.printf("Inserir mês: ");
+            System.out.print("Inserir mês: ");
             mes = input.nextInt();
         } while (mes < 1 || mes > 12);
 
         do {
-            System.out.printf("Inserir primeiro dia da semana do mês: ");
+            System.out.print("Inserir primeiro dia da semana do mês: ");
             dia = input.nextInt();
         } while (dia < 1 || dia > 7);
 
@@ -43,15 +45,15 @@ public class ex04 {
     }
 
     public static void printResults(int ano, int mes, int dia) {
-        String meses[] = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
+        String[] meses = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December" };
-        int spaces[] = { 3, 6, 9, 12, 15, 18, 0 };
+        int[] spaces = { 3, 6, 9, 12, 15, 18, 0 };
         String titulo = meses[mes - 1] + " " + ano;
-        System.out.printf("\n%s%s", " ".repeat((20 - titulo.length()) / 2), titulo); // center string
-        System.out.printf("\nSu Mo Tu We Th Fr Sa\n");
+        System.out.printf("%n%s%s", " ".repeat((20 - titulo.length()) / 2), titulo); // center string
+        System.out.print("%nSu Mo Tu We Th Fr Sa%n");
         System.out.print(" ".repeat(spaces[dia - 1])); // spacing
 
-        for (int i = 1; i <= daysInMonth(ano, mes); i++) { // print days, print \n when saturday
+        for (int i = 1; i <= daysInMonth(ano, mes); i++) { // print days, print %n when saturday
             System.out.printf("%2d ", i);
             dia++;
             if (dia == 7 || dia == 14) {

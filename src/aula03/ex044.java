@@ -8,7 +8,7 @@ import java.util.Collections;
 public class ex044 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<Double> lista = new ArrayList<Double>();
+        List<Double> lista = new ArrayList<>();
 
         do {
             System.out.print("Inserir número real: ");
@@ -20,7 +20,7 @@ public class ex044 {
         } while ((!lista.get(0).equals(lista.get(lista.size() - 1))));
 
         sc.close();
-        System.out.printf("Valor máximo: %4.2f\nValor mínimo: %4.2f\n Média: %4.2f\n Total de números: %d",
+        System.out.printf("Valor máximo: %4.2f%nValor mínimo: %4.2f%n Média: %4.2f%n Total de números: %d",
                 Collections.max(lista), Collections.min(lista),
                 lista.stream()
                         .mapToDouble(a -> a)
