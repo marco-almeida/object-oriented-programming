@@ -12,7 +12,7 @@ public class Utilizador {
         this.nome = nome;
         this.nMec = nMec;
         this.curso = curso;
-        livrosRequisitados = new ArrayList<Integer>();
+        livrosRequisitados = new ArrayList<>();
     }
 
     @Override

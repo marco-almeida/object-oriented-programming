@@ -23,8 +23,8 @@ public class ex02 {
         System.out.println("Número de elementos em c1: " + c1.size());
         System.out.println("Número de elementos em c2: " + c2.size());
 
-        System.out.println("c1 contém 6?: " + ((c1.contains(6) ? "sim" : "não")));
-        System.out.println("c2 contém 6?: " + ((c2.contains(6) ? "sim" : "não")));
+        System.out.println("c1 contém 6?: " + (c1.contains(6) ? "sim" : "não"));
+        System.out.println("c2 contém 6?: " + (c2.contains(6) ? "sim" : "não"));
 
         System.out.println("União:" + c1.combine(c2));
         System.out.println("Interseção:" + c1.intersect(c2));

@@ -3,7 +3,7 @@ package aula07;
 public abstract class Forma {
     private String cor;
 
-    public Forma(String cor) {
+    protected Forma(String cor) {
         this.cor = cor;
     }
 

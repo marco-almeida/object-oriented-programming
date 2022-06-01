@@ -41,6 +41,6 @@ public class PesadoMercadorias extends Pesado {
         PesadoMercadorias other = (PesadoMercadorias) obj;
         if (cargaMaxima != other.cargaMaxima)
             return false;
-        return super.equals(obj) && true;
+        return super.equals(obj);
     }
 }

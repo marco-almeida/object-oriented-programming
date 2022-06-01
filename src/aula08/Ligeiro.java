@@ -55,7 +55,7 @@ public class Ligeiro extends Viatura {
             return false;
         if (numQuadro != other.numQuadro)
             return false;
-        return super.equals(obj) && true;
+        return super.equals(obj);
     }
 
 }

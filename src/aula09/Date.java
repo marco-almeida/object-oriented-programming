@@ -14,10 +14,7 @@ public abstract class Date {
         if (!validMonth(month)) {
             return false;
         }
-        if (day < 1 || day > monthDays(month, year)) {
-            return false;
-        }
-        return true;
+        return day < 1 || day > monthDays(month, year);
     }
 
     public static boolean validMonth(int month) {

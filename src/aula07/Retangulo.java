@@ -28,6 +28,18 @@ public class Retangulo extends Forma {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        long temp;
+        temp = Double.doubleToLongBits(altura);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(comprimento);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -39,11 +51,6 @@ public class Retangulo extends Forma {
         if (Double.doubleToLongBits(altura) != Double.doubleToLongBits(other.altura))
             return false;
         if (Double.doubleToLongBits(comprimento) != Double.doubleToLongBits(other.comprimento))
-            return false;
-        if (getCor() == null) {
-            if (other.getCor() != null)
-                return false;
-        } else if (!getCor().equals(other.getCor()))
             return false;
         return true;
     }

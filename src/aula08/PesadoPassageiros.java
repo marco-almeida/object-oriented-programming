@@ -41,7 +41,7 @@ public class PesadoPassageiros extends Pesado {
         PesadoPassageiros other = (PesadoPassageiros) obj;
         if (maxPassageiros != other.maxPassageiros)
             return false;
-        return super.equals(obj) && true;
+        return super.equals(obj);
     }
 
 }

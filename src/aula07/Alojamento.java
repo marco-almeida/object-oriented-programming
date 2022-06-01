@@ -8,7 +8,7 @@ public abstract class Alojamento {
     private boolean disponivel;
     private double avaliacao;
 
-    public Alojamento(String codigo, String nome, String local, double precoNoite,
+    protected Alojamento(String codigo, String nome, String local, double precoNoite,
             double avaliacao) {
         if (avaliacao >= 1 && avaliacao <= 5) {
             this.codigo = codigo;

@@ -18,6 +18,7 @@ public class ex04 {
             }
             System.out.print(word + " ");
         }
+        input.close();
         System.out.print("\nAcabam com 's': ");
         for (String string : moreThanTwoChars) {
             if (string.endsWith("s")) {

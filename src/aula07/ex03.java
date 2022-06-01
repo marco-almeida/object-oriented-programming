@@ -68,7 +68,7 @@ public class ex03 {
         Utils.nextLine("");
         String variacao = Utils.nextLine("Quarto de Hotel ou Apartamento: ");
 
-        if (variacao.toLowerCase().equals("apartamento")) {
+        if (variacao.equalsIgnoreCase("apartamento")) {
             int numQuartos = Utils.nextInt("Número de quartos: ");
             aloj = new Apartamento(codigo, nome, local, precoNoite, avaliacao, numQuartos);
         } else {

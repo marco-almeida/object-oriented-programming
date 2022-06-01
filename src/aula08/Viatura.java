@@ -8,7 +8,7 @@ public abstract class Viatura implements KmPercorridosInterface, Comparable<Viat
     private int kmPercorridos;
     private int ultimoTrajeto;
 
-    public Viatura(String matricula, String marca, String modelo, int potencia) {
+    protected Viatura(String matricula, String marca, String modelo, int potencia) {
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;

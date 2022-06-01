@@ -6,7 +6,7 @@ public abstract class ObjetoMovel {
     private double distanciaPercorrida = 0;
 
     public void move(int newX, int newY) {
-        this.distanciaPercorrida += Math.sqrt((newX - x) * (newX - x) + (newY - y) * (newY - y));
+        this.distanciaPercorrida += Math.sqrt(((double)newX - x) * (newX - x) + (newY - y) * (newY - y));
         this.x = newX;
         this.y = newY;
     }

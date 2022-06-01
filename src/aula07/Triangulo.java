@@ -31,6 +31,20 @@ public class Triangulo extends Forma {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        long temp;
+        temp = Double.doubleToLongBits(lado1);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(lado2);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(lado3);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -44,11 +58,6 @@ public class Triangulo extends Forma {
         if (Double.doubleToLongBits(lado2) != Double.doubleToLongBits(other.lado2))
             return false;
         if (Double.doubleToLongBits(lado3) != Double.doubleToLongBits(other.lado3))
-            return false;
-        if (getCor() == null) {
-            if (other.getCor() != null)
-                return false;
-        } else if (!getCor().equals(other.getCor()))
             return false;
         return true;
     }

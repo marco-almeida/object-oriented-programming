@@ -4,7 +4,7 @@ public abstract class Pesado extends Viatura {
     private int numQuadro;
     private int peso;
 
-    public Pesado(String matricula, String marca, String modelo, int potencia, int numQuadro, int peso) {
+    protected Pesado(String matricula, String marca, String modelo, int potencia, int numQuadro, int peso) {
         super(matricula, marca, modelo, potencia);
         this.numQuadro = numQuadro;
         this.peso = peso;
@@ -48,7 +48,7 @@ public abstract class Pesado extends Viatura {
             return false;
         if (peso != other.peso)
             return false;
-        return super.equals(obj) && true;
+        return super.equals(obj);
     }
 
 }

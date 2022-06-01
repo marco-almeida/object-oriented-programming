@@ -43,7 +43,7 @@ public class Motociclo extends Viatura {
                 return false;
         } else if (!tipo.equals(other.tipo))
             return false;
-        return super.equals(obj) && true;
+        return super.equals(obj);
     }
 
 }

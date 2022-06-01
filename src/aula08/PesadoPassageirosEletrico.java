@@ -47,7 +47,7 @@ public class PesadoPassageirosEletrico extends PesadoPassageiros implements Veic
         PesadoPassageirosEletrico other = (PesadoPassageirosEletrico) obj;
         if (autonomia != other.autonomia)
             return false;
-        return true && super.equals(obj);
+        return super.equals(obj);
     }
 
     public int getAutonomia() {

@@ -41,7 +41,7 @@ public class Taxi extends Ligeiro {
         Taxi other = (Taxi) obj;
         if (numLicense != other.numLicense)
             return false;
-        return super.equals(obj) && true;
+        return super.equals(obj);
     }
 
 }

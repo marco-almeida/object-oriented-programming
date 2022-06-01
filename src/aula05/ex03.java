@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class ex03 {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		ArrayList<Circulo> circulos = new ArrayList<Circulo>();
-		ArrayList<Retangulo> retangulos = new ArrayList<Retangulo>();
-		ArrayList<Triangulo> triangulos = new ArrayList<Triangulo>();
+		ArrayList<Circulo> circulos = new ArrayList<>();
+		ArrayList<Retangulo> retangulos = new ArrayList<>();
+		ArrayList<Triangulo> triangulos = new ArrayList<>();
 		int op;
 		do {
 			printMenu();

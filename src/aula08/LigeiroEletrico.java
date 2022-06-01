@@ -42,7 +42,7 @@ public class LigeiroEletrico extends Ligeiro implements VeiculoEletrico {
         LigeiroEletrico other = (LigeiroEletrico) obj;
         if (autonomia != other.autonomia)
             return false;
-        return true && super.equals(obj);
+        return super.equals(obj);
     }
 
     @Override

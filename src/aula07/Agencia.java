@@ -12,8 +12,8 @@ public class Agencia {
     public Agencia(String nome, String endereco) {
         this.nome = nome;
         this.endereco = endereco;
-        this.alojamentos = new ArrayList<Alojamento>();
-        this.viaturas = new ArrayList<Carro>();
+        this.alojamentos = new ArrayList<>();
+        this.viaturas = new ArrayList<>();
     }
 
     public void addAlojamento(Alojamento alo) {

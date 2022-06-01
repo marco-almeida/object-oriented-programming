@@ -31,7 +31,7 @@ public class ex02 {
         }
     }
 
-    public static void remove(Map<String, List<String>> m, String k, String v) {
+    public static void remove(Map<String, List<String>> m, String k, List<String> v) {
         m.remove(k, v);
     }
 
