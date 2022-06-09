@@ -1,3 +1,6 @@
+/**
+ * ta feito assim porque nao consegui ler as cenas bem do ficheiro tive que usar deepweb scanner
+ */
 package aula11;
 
 import java.io.BufferedReader;
@@ -57,5 +60,6 @@ public class ex01 {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(dados);
     }
 }
