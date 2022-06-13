@@ -1,5 +1,5 @@
 /**
- * ta feito assim porque nao consegui ler as cenas bem do ficheiro tive que usar deepweb scanner
+ * ta feito assim porque nao consegui ler bem o ficheiro tive que usar deepweb scanner
  */
 package aula11;
 
@@ -15,7 +15,6 @@ import java.nio.charset.StandardCharsets;
 
 public class ex01 {
     public static void main(String[] args) {
-
         final char[] seperator = { '\t', '\n', '.', ':', '‘', '’', ';', '?', '!', '-', '*', '{', '}', '=', '+', '&',
                 '/', '(', ')', '[', ']', '”', '“', '"', '\'', '/', ' ', ',' };
         Map<String, Map<String, Integer>> dados = new TreeMap<>();
