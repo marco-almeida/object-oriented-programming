@@ -1,6 +1,5 @@
 *.zip
 .vscode/
 bin/
-atp2maybe/
 .scannerwork/
 sonar-project.properties
