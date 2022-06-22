@@ -1,55 +1,94 @@
-package teste;
+public abstract class Produto implements PVP, Comparable<Produto> {
+    private String codigo;
+    private int quantidade;
+    private double preco;
+    private int stock = 1;
+    private static int numPar = 1000;
+    private int numParEste;
 
-public abstract class Produto implements PVP {
-	private static int proximoCodigo = 1000;
-	
-	private String codigo;
-	private int quantidade;
-	private double preco;
+    protected Produto(String codigo, int quantidade, double preco) {
+        this(preco);
+        this.codigo = codigo;
+        this.quantidade = quantidade;
+    }
 
-	public Produto(String start, double preco) {
-		this.codigo = start + String.valueOf(proximoCodigo);
-		proximoCodigo += 2;
-		
-		this.quantidade = 0;
-		this.preco = preco;
-	}
+    protected Produto(double preco) {
+        this.preco = preco;
+        numParEste = numPar;
+        numPar += 2;
+    }
 
-	public abstract String getDescricao();
+    public int compareTo(Produto p) {
+        return codigo.compareTo(p.codigo);
+    }
 
-	public void setStock(int quantidade) {
-		this.quantidade = quantidade;
-	}
-	
-	public void addStock(int quantidade) {
-		this.quantidade += quantidade;
-	}
-	
-	public boolean vender(int quantidade) {
-		if (this.quantidade < quantidade)
-			return false;
-		
-		this.quantidade -= quantidade;
-		return true;
-	}
-	
-	public int getStock() {
-		return quantidade;
-	}
-	
-	public double getPreco() {
-		return this.preco;
-	}
-	
-	public int compare(Produto p) {
-		return this.codigo.compareTo(p.codigo);
-	}
-	
-	public int compareDescs(Produto p) {
-		return this.getDescricao().compareTo(p.getDescricao());
-	}
-	
-	public String getCodigo() {
-		return codigo;
-	}
+    @Override
+    public double precoVendaAoPublico() {
+        return preco * 1.23;
+    }
+
+    public void addStock(int s) {
+        this.stock += s;
+    }
+
+    public boolean vender(int num) {
+        if (this.stock >= num) {
+            this.setStock(this.getStock() - num);
+            return true;
+        }
+        return false;
+    }
+
+    public String getDescricao() {
+        return null;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public int getStock() {
+        return this.stock;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public static int getNumPar() {
+        return numPar;
+    }
+
+    public static void setNumPar(int numPar) {
+        Produto.numPar = numPar;
+    }
+
+    public int getNumParEste() {
+        return numParEste;
+    }
+
+    public void setNumParEste(int numParEste) {
+        this.numParEste = numParEste;
+    }
+
 }

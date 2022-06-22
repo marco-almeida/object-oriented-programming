@@ -1,35 +1,20 @@
-package teste;
+public class Autor implements Comparable<Autor> {
+    private String nome;
+    private int anoNascimento;
 
-public class Autor implements Comparable {
-	private String nome;
-	private int anoNascimento;
-	
-	public Autor(String nome, int anoNascimento) {
-		super();
-		this.nome = nome;
-		this.anoNascimento = anoNascimento;
-	}
-	
-	public String getNome() {
-		return this.nome;
-	}
-	
-	public int getAnoNascimento() {
-		return this.anoNascimento;
-	}
+    public Autor(String nome, int anoNascimento) {
+        this.nome = nome;
+        this.anoNascimento = anoNascimento;
+    }
 
-	public int compare(Autor a) {
-		return this.nome.compareTo(a.nome);
-	}
+    @Override
+    public int compareTo(Autor o) {
+        return nome.compareTo(o.nome);
+    }
 
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return this.anoNascimento;
-	}
+    @Override
+    public String toString() {
+        return String.format("%s (%d-)", nome, anoNascimento);
+    }
 
-	@Override
-	public String toString() {
-		return nome + " (" + anoNascimento + "-)";
-	}
 }

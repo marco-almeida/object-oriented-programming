@@ -64,7 +64,7 @@ public class P002021 {
 		AgenciaTuristica fest = null;
 
 		// Adicione a seguir o código necessário para a leitura do ficheiro
-		try (Scanner sc = new Scanner(new File("uafest.txt"))) {
+		try (Scanner sc = new Scanner(new File("src/uafest.txt"))) {
 			String[] header = sc.nextLine().split(";");
 			fest = new AgenciaTuristica(header[0], header[1]);
 			while (sc.hasNextLine()) {

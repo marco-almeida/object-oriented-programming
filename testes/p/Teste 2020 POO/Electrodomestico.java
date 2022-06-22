@@ -1,50 +1,44 @@
-package teste;
-
 public class Electrodomestico extends Produto {
-	public static final int IVA = 23;
-	
-	private String tipo;
-	private String marca;
-	private String modelo;
-	private ClasseEnergetica classe;
-	private double potencia;
-	
-	public Electrodomestico(String tipo, String marca, String modelo, double potencia, double preco) {
-		super("E", preco);
-		this.tipo = tipo;
-		this.marca = marca;
-		this.modelo = modelo;
-		this.potencia = potencia;
-	}
-	
-	public Electrodomestico(String tipo, String marca, String modelo, double preco) {
-		super("E", preco);
-		this.tipo = tipo;
-		this.marca = marca;
-		this.modelo = modelo;
-	}
+    private String tipo;
+    private String marca;
+    private String modelo;
+    private ClasseEnergetica classe;
+    private double potencia;
 
-	public void setClasse(ClasseEnergetica classe) {
-		this.classe = classe;
-	}
-	
-	public ClasseEnergetica getClasse() {
-		return this.classe;
-	}
+    public Electrodomestico(String tipo, String marca, String modelo, double potencia, double preco) {
+        super(preco);
+        this.tipo = tipo;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.potencia = potencia;
+        setCodigo("E" + getNumParEste());
+    }
 
-	@Override
-	public double precoVendaAoPublico() {
-		return this.getPreco()*(1+IVA/100);
-	}
+    public Electrodomestico(String tipo, String marca, String modelo, double preco) {
+        super(preco);
+        this.tipo = tipo;
+        this.marca = marca;
+        this.modelo = modelo;
+        setCodigo("E" + getNumParEste());
+    }
 
-	@Override
-	public String getDescricao() {
-		return this.tipo+":"+this.marca+"/"+this.modelo;
-	}
+    public void setClasse(ClasseEnergetica classe) {
+        this.classe = classe;
+    }
 
-	@Override
-	public String toString() {
-		return "Electrodomestico ["+ this.getCodigo() + " " + tipo + " " + marca + " " + modelo + " " + classe
-				+ " " + potencia + "]";
-	}
+    public ClasseEnergetica getClasse() {
+        return this.classe;
+    }
+
+    @Override
+    public String getDescricao() {
+        return String.format("%s:%s/%s", tipo, marca, modelo);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Eletrodomestico [%s %s %s %s %s %.1f W]", getCodigo(), tipo, marca, modelo,
+                classe.toString(), potencia);
+    }
+
 }

@@ -1,40 +1,32 @@
-package teste;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Telemovel extends Produto {
-	public static final int IVA = 23;
-	
-	private String marca;
-	private String modelo;
-	private Set<String> notas;
-	
-	public Telemovel(String marca, String modelo, double preco) {
-		super("T", preco);
-		this.marca = marca;
-		this.modelo = modelo;
-		
-		notas = new HashSet<String>();
-	}
-	
-	public void addNota(String nota) {
-		notas.add(nota);
-	}
+    private String marca;
+    private String modelo;
+    private Set<String> notas;
 
-	@Override
-	public double precoVendaAoPublico() {
-		return this.getPreco()*(1+IVA/100);
-	}
+    public Telemovel(String marca, String modelo, double preco) {
+        super(preco);
+        this.marca = marca;
+        this.modelo = modelo;
+        this.notas = new TreeSet<>();
+        setCodigo("T" + getNumParEste());
+    }
 
-	@Override
-	public String getDescricao() {
-		// TODO Auto-generated method stub
-		return this.marca+"/"+this.modelo;
-	}
+    public void addNota(String nota) {
+        notas.add(nota);
+    }
 
-	@Override
-	public String toString() {
-		return "Telemovel [" + marca + " " + modelo + " " + notas + "]";
-	}
+    @Override
+    public String getDescricao() {
+        return String.format("%s/%s", marca.toUpperCase(), modelo);
+    }
+
+    @Override
+    public String toString(){
+        return String.format("Telemovel [%s %s - %s %s",getCodigo(),marca,modelo,notas);
+    }
+
 }

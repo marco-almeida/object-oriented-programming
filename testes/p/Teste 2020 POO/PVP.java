@@ -1,5 +1,3 @@
-package teste;
-
 public interface PVP {
-	public double precoVendaAoPublico();
+    public double precoVendaAoPublico();
 }

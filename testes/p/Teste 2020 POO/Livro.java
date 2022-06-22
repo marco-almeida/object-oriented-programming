@@ -1,59 +1,90 @@
-package teste;
-
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 import java.util.TreeSet;
 
 public class Livro extends Produto {
-	public static final int IVA = 6;
-	
-	private String titulo;
-	private Set<Autor> autores;
-	
-	public Livro(String titulo, double preco) {
-		super("L", preco);
-		this.titulo = titulo;
-		
-		this.autores = new TreeSet<Autor>();
-	}
-	
-	public Livro(String titulo, double preco, List<Autor> autores) {
-		super("L", preco);
-		this.titulo = titulo;
-		
-		this.autores = new TreeSet<Autor>(Autor::compare);
-		this.autores.addAll(autores);
-	}
-	
-	public void add(Autor autor) {
-		this.autores.add(autor);
-	}
-	
-	public Set<Autor> autores() {
-		return autores;
-	}
+    private String titulo;
+    private Collection<Autor> lista;
 
-	public String getTitulo() {
-		return titulo;
-	}
+    public Livro(String titulo, double preco) {
+        super(preco);
+        this.titulo = titulo;
+        this.lista = new TreeSet<>();
+        setCodigo("L" + getNumParEste());
+    }
 
-	public Set<Autor> getLista() {
-		return autores;
-	}
-	
-	public int numeroAutores() {
-		return autores.size();
-	}
+    public Livro(String titulo, double preco, Collection<Autor> lista) {
+        super(preco);
+        this.titulo = titulo;
+        this.lista = lista;
+        setCodigo("L" + getNumParEste());
+    }
 
-	@Override
-	public double precoVendaAoPublico() {
-		return this.getPreco()*(1+IVA/100);
-	}
+    public void add(Autor a) {
+        lista.add(a);
+    }
+    @Override
+    public String getDescricao(){
+        return titulo;
+    }
 
-	@Override
-	public String getDescricao() {
-		return this.getTitulo();
-	}
+    @Override
+    public double precoVendaAoPublico() {
+        return getPreco() * 1.06;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Collection<Autor> getLista() {
+        return lista;
+    }
+
+    public void setlista(Collection<Autor> lista) {
+        this.lista = lista;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((lista == null) ? 0 : lista.hashCode());
+        result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Livro other = (Livro) obj;
+        if (lista == null) {
+            if (other.lista != null)
+                return false;
+        } else if (!lista.equals(other.lista))
+            return false;
+        if (titulo == null) {
+            if (other.titulo != null)
+                return false;
+        } else if (!titulo.equals(other.titulo))
+            return false;
+        return true;
+    }
+
+    public int numeroAutores() {
+        return lista.size();
+    }
+
+    public String autores() {
+        return lista.toString();
+    }
+
 }

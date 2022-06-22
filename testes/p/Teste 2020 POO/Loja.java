@@ -1,96 +1,89 @@
-package teste;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class Loja {
-	private String nome;
-	private String enderecoWeb;
-	private TreeSet<Produto> produtos;
-	
-	public Loja(String nome, String enderecoWeb) {
-		super();
-		this.nome = nome;
-		this.enderecoWeb = enderecoWeb;
-		this.produtos = new TreeSet<Produto>(Produto::compare);
-	}
-	
-	public int totalItems() {
-		int total = 0;
-		for(Produto p: produtos)
-			total += p.getStock();
-		return total;
-	}
-	
-	public void add(Produto produto) {
-		produtos.add(produto);
-	}
-	
-	public Produto getProdutoPelaDescricao(String descricao) {
-		for (Produto p: produtos)
-			if (p.getDescricao().equals(descricao))
-				return p;
-		return null;
-	}
-	
-	public List<Produto> produtosPrecoFinalSuperiorA(double preco) {
-		List<Produto> products = new ArrayList<Produto>();
-		
-		for (Produto p: produtos)
-			if (p.precoVendaAoPublico() > preco)
-				products.add(p);
-		
-		return products;
-	}
-	
-	public List<Electrodomestico> electrodomesticosClasseX(String classe) {
-		List<Electrodomestico> eletrodomesticos = new ArrayList<Electrodomestico>();
-		Electrodomestico e;
-		
-		for (Produto p: produtos) {
-			if (p instanceof Electrodomestico) {
-				e = (Electrodomestico) p;
-				if (e.getClasse() == ClasseEnergetica.valueOf(classe))
-					eletrodomesticos.add(e);
-			}	
-		}
-		
-		return eletrodomesticos;
-	}
-	
-	public void reorder() {
-		TreeSet<Produto> temp = new TreeSet<Produto>(Produto::compareDescs);
-		temp.addAll(this.produtos);
-		this.produtos = temp;
-	}
+    private String nome;
+    private String address;
+    private Set<Produto> produtosEmStock;
 
-	@Override
-	public String toString() {
-		String desc = nome + "\n";
-		desc += String.format("%10s %-30s %10s %10s\n", "Código", "Produto", "Em Stock", "PVP");
-		
-		for (Produto p: produtos)
-			desc += String.format("%10s %-30s %10d %10.2f\n", p.getCodigo(), p.getDescricao(), p.getStock(), p.getPreco());
-		
-		return desc;
-	}
+    public Loja(String nome, String address) {
+        this.nome = nome;
+        this.address = address;
+        produtosEmStock = new TreeSet<>();
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public int totalItems() {
+        int sum = 0;
+        for (Produto produto : produtosEmStock) {
+            sum += produto.getStock();
+        }
+        return sum;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void add(Produto p) {
+        produtosEmStock.add(p);
+    }
 
-	public String getEnderecoWeb() {
-		return enderecoWeb;
-	}
+    public Produto getProdutoPelaDescricao(String s) {
+        for (Produto produto : produtosEmStock) {
+            if (produto.getDescricao().equals(s)) {
+                return produto;
+            }
+        }
+        Produto p = new Livro("asdasd", 1);
+        return p;
+    }
 
-	public void setEnderecoWeb(String enderecoWeb) {
-		this.enderecoWeb = enderecoWeb;
-	}
-	
-	
+    public void reorder() {
+        List<Produto> arr = new ArrayList<>(produtosEmStock);
+        Collections.sort(arr,
+                (o1, o2) -> o1.getDescricao().compareTo(o2.getDescricao()));
+        produtosEmStock = new TreeSet<>(arr);
+    }
+
+    public List<Produto> produtosPrecoFinalSuperiorA(double preco) {
+        List<Produto> productos = new ArrayList<>();
+        for (Produto x : produtosEmStock) {
+            if (x.precoVendaAoPublico() > preco) {
+                productos.add(x);
+            }
+        }
+        return productos;
+    }
+
+    public List<Produto> electrodomesticosClasseX(String cl) {
+        List<Produto> listEletro = new ArrayList<>();
+        for (Produto x : produtosEmStock) {
+            if (x instanceof Electrodomestico) {
+                if (((Electrodomestico) (x)).getClasse().name().equals(cl)) {
+                    listEletro.add(x);
+                }
+            }
+        }
+        return listEletro;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stb = new StringBuilder();
+        stb.append("Loja " + nome + "\n" + "CÃ³digo Produto" + "\tEm Stock\tPVP\n");
+
+        for (Produto produto : produtosEmStock) {
+            stb.append(String.format(" %s %s\t%d\t%.2f\n", produto.getCodigo(), produto.getDescricao(),
+                    produto.getStock(), produto.precoVendaAoPublico()));
+        }
+        return stb.toString();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
 }
