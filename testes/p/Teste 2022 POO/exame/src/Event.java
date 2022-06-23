@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Event implements IEvent {
+public class Event implements IEvent, Comparable<Event> {
     private LocalDate data;
     private List<Activity> atividades;
 
@@ -28,6 +28,11 @@ public class Event implements IEvent {
         }
         atividades.add(activity);
         return this;
+    }
+
+    @Override
+    public int compareTo(Event e) {
+        return getData().compareTo(e.getData());
     }
 
     @Override
@@ -58,6 +63,16 @@ public class Event implements IEvent {
 
     public void setAtividades(List<Activity> atividades) {
         this.atividades = atividades;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stb = new StringBuilder(
+                String.format("Evento em %s, total=%d euros\n", data.toString(), (int) (totalPrice())));
+        for (Activity activity : atividades) {
+            stb.append("\t" + activity + "\n");
+        }
+        return stb.toString();
     }
 
 }

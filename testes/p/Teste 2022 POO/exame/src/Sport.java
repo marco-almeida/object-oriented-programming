@@ -20,10 +20,25 @@ public class Sport extends Activity {
         return String.format("%s sporting activity with %d participants.", modalidade.toString(), getParticipantes());
     }
 
-    public enum Modality{
-        KAYAK,
-        HIKING;
-    } 
+    public enum Modality {
+        KAYAK("Kayak"),
+        HIKING("Hiking"),
+        BIKE("Bike"),
+        BOWLING("Bowling");
+
+        private String value;
+
+        Modality(final String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return this.getValue();
+        }
+    }
 }
-
-

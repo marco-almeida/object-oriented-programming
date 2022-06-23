@@ -1,8 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 // Notas:
 // Não altere o código apresentado
@@ -58,37 +62,44 @@ public class P002122 {
 
 	private static void alinea2(PrintStream out) {
 		out.println("\nAlínea 2) ----------------------------------\n");
-		EventManager em = new EventManager("ola"); // modificar
+		EventManager em = new EventManager("Funny Sports"); // modificar
 		// Adicione a seguir o código necessário para a leitura do ficheiro
-		try (Scanner sc = new Scanner(new File("events.txt"))) {
-			Client currentClient = null;
-			Event e1 = null;
-			while (sc.hasNextLine()) {
-				String linha[] = sc.nextLine().split(",");
-				if (linha[0].charAt(0) == '#') {
-					currentClient = em.addClient(linha[0].substring(2), linha[1]);
-					e1 = em.addEvent(currentClient, LocalDate.parse(linha[2]));
-				}
-				if (linha[0].charAt(0) == '*') {
-					switch (linha[0].substring(2)) {
-						case "Culture":
-							e1.addActivity(new Culture(Culture.Option.valueOf(linha[1]), Integer.parseInt(linha[2])));
-							break;
-						case "Catering":
-							e1.addActivity(new Catering(Catering.Option.valueOf(linha[1]), Integer.parseInt(linha[2])));
-							break;
-						case "Sport":
-							e1.addActivity(new Sport(Sport.Modality.valueOf(linha[1]), Integer.parseInt(linha[2])));
-							break;
-						default:
-							System.out.println("erro");
-							break;
-					}
-				}
-			}
-		} catch (FileNotFoundException e) {
+		Client currentClient = null;
+		Event e1 = null;
+		List<String> lista = new ArrayList<>();
+		try {
+			lista = Files.readAllLines(Path.of("events.txt"));
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		for (int i = 0; i < lista.size(); i++) {	
+			String linha[] = lista.get(i).split(",");
+			if (linha[0].charAt(0) == '#') {
+				currentClient = em.addClient(linha[0].substring(2), linha[1]);
+				if (currentClient == null){
+					continue;
+				}
+				e1 = em.addEvent(currentClient, LocalDate.parse(linha[2]));
+			}
+			
+			if (linha[0].charAt(0) == '*') {
+				switch (linha[0].substring(2)) {
+					case "Culture":
+						e1.addActivity(new Culture(Culture.Option.valueOf(linha[1]), Integer.parseInt(linha[2])));
+						break;
+					case "Catering":
+						e1.addActivity(new Catering(Catering.Option.valueOf(linha[1]), Integer.parseInt(linha[2])));
+						break;
+					case "Sport":
+						e1.addActivity(new Sport(Sport.Modality.valueOf(linha[1]), Integer.parseInt(linha[2])));
+						break;
+					default:
+						System.out.println("erro");
+						break;
+				}
+			}
+		}
+
 		// não modifique o metodo a partir daqui. Pode comentar para executar o
 		// programa
 

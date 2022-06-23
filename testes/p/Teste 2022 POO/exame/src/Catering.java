@@ -21,8 +21,23 @@ public class Catering extends Activity {
     }
 
     public enum Option {
-        FULL_MENU,
-        DRINKS_AND_SNACKS,
-        LIGHT_BITES;
+        FULL_MENU("Full menu"),
+        DRINKS_AND_SNACKS("Drinks and Snacks"),
+        LIGHT_BITES("Light bites");
+
+        private String value;
+
+        Option(final String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return this.getValue();
+        }
     }
 }

@@ -20,12 +20,25 @@ public class Culture extends Activity {
         return String.format("%s with %d participants", option.toString(), getParticipantes());
     }
 
-    public enum Option{
-        ARCHITECTURAL_TOUR,
-        RIVER_TOUR,
-        ART_MUSEUM,
-        WINE_TASTING;
-    }  
+    public enum Option {
+        ARCHITECTURAL_TOUR("Architectural tour"),
+        RIVER_TOUR("River tour"),
+        ART_MUSEUM("Art museum"),
+        WINE_TASTING("Wine tasting");
+
+        private String value;
+
+        Option(final String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return this.getValue();
+        }
+    }
 }
-
-
