@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Event implements IEvent, Comparable<Event> {
+public class Event implements IEvent {
     private LocalDate data;
     private List<Activity> atividades;
 
@@ -28,11 +28,6 @@ public class Event implements IEvent, Comparable<Event> {
         }
         atividades.add(activity);
         return this;
-    }
-
-    @Override
-    public int compareTo(Event e) {
-        return getData().compareTo(e.getData());
     }
 
     @Override
@@ -74,5 +69,4 @@ public class Event implements IEvent, Comparable<Event> {
         }
         return stb.toString();
     }
-
 }

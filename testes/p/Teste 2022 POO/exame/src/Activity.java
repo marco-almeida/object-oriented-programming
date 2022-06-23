@@ -1,7 +1,7 @@
 public abstract class Activity {
     private int participantes;
     private double preco;
-    
+
     protected Activity(int participantes) {
         this.participantes = participantes;
     }
@@ -26,5 +26,4 @@ public abstract class Activity {
     public String toString() {
         return "Activity [participantes=" + participantes + ", preco=" + preco + "]";
     }
-
 }

@@ -72,17 +72,15 @@ public class P002122 {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		for (int i = 0; i < lista.size(); i++) {	
+		for (int i = 0; i < lista.size(); i++) {
 			String linha[] = lista.get(i).split(",");
 			if (linha[0].charAt(0) == '#') {
 				currentClient = em.addClient(linha[0].substring(2), linha[1]);
-				if (currentClient == null){
+				if (currentClient == null) {
 					continue;
 				}
 				e1 = em.addEvent(currentClient, LocalDate.parse(linha[2]));
-			}
-			
-			if (linha[0].charAt(0) == '*') {
+			} else if (linha[0].charAt(0) == '*') {
 				switch (linha[0].substring(2)) {
 					case "Culture":
 						e1.addActivity(new Culture(Culture.Option.valueOf(linha[1]), Integer.parseInt(linha[2])));
@@ -92,9 +90,6 @@ public class P002122 {
 						break;
 					case "Sport":
 						e1.addActivity(new Sport(Sport.Modality.valueOf(linha[1]), Integer.parseInt(linha[2])));
-						break;
-					default:
-						System.out.println("erro");
 						break;
 				}
 			}
@@ -115,5 +110,4 @@ public class P002122 {
 			out.println();
 		}
 	}
-
 }

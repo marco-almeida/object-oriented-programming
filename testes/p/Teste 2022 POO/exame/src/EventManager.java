@@ -1,10 +1,9 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class EventManager {
     private String nome;
@@ -25,7 +24,7 @@ public class EventManager {
 
     public Client addClient(String nome, String localidade) {
         Client c = new Client(nome, localidade);
-        if(lista.containsKey(c)){
+        if (lista.containsKey(c)) {
             return null;
         }
         lista.put(c, new ArrayList<>());
@@ -42,12 +41,13 @@ public class EventManager {
 
     public List<String> nextEventsByDate() {
         List<String> result = new ArrayList<>();
-        Set<Event> eventosTotais = new TreeSet<>();
-        for (List<Event> listaEventosTotal : lista.values()){
-            for (Event e : listaEventosTotal){
+        List<Event> eventosTotais = new ArrayList<>();
+        for (List<Event> listaEventosTotal : lista.values()) {
+            for (Event e : listaEventosTotal) {
                 eventosTotais.add(e);
             }
         }
+        eventosTotais.sort(Comparator.comparing(Event::getData));
         for (Event event : eventosTotais) {
             result.add(event.toString());
         }
@@ -89,7 +89,7 @@ public class EventManager {
             List<Event> value = entry.getValue();
             stb.append(key.toString() + "\n");
             for (Event v : value) {
-                stb.append(String.format("*** Evento em %s, total=%d euros\n", v.getDate(), (int)(v.totalPrice())));
+                stb.append(String.format("*** Evento em %s, total=%d euros\n", v.getDate(), (int) (v.totalPrice())));
                 for (Activity a : v.getAtividades()) {
                     stb.append(String.format("\t%s\n", a));
                 }
@@ -102,5 +102,4 @@ public class EventManager {
     public String toString() {
         return nome;
     }
-
 }
