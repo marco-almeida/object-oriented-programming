@@ -20,8 +20,8 @@ public class Event implements IEvent {
                 if (((Sport) act).getModalidade().equals(((Sport) activity).getModalidade())) {
                     return this;
                 }
-            } else if (act instanceof Catering && activity instanceof Catering) {
-                if (((Catering) act).getOption().equals(((Catering) activity).getOption())) {
+            } else if (act instanceof Culture && activity instanceof Culture) {
+                if (((Culture) act).getOption().equals(((Culture) activity).getOption())) {
                     return this;
                 }
             }
